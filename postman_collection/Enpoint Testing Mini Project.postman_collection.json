@@ -112,7 +112,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:4000/api/students?email=dee",
+					"raw": "localhost:4000/api/students?email=gdee@clickbank.net",
 					"host": [
 						"localhost"
 					],
@@ -124,7 +124,7 @@
 					"query": [
 						{
 							"key": "email",
-							"value": "dee",
+							"value": "gdee@clickbank.net",
 							"equals": true
 						}
 					]

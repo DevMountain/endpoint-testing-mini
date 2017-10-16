@@ -102,6 +102,9 @@ module.exports = {
                 if (student.id === id) studentToRemove = student;
                 return student.id !== id;
             })
+            if (Object.keys(studentToRemove).length === 0) {
+                return res.status(404).send('No student with that ID.')
+            }
             res.status(200).send([studentToRemove])
         }
     }
