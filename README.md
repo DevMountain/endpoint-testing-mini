@@ -13,7 +13,6 @@ Postman docs: https://www.getpostman.com/docs/postman/scripts/test_scripts
 ## Step 1
 
 * Run `npm install` in the terminal to install dependencies.
-* Run `nodemon` in the terminal. The package.json file has already been configured to run the server file on the execution of the `nodemon` command.
 
 ## Step 2
 
