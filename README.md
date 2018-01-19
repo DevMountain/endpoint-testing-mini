@@ -392,7 +392,7 @@ pm.test('Student w/ ID 18 removed', function() {
 
 </details>
 
-<img src="https://github.com/DevMountain/endpoint-testing-mini/blob/solution/readme-assets/9.png" />
+<img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/9-1.png" />
 
 ## Step 12
 
