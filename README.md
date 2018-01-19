@@ -356,7 +356,7 @@ pm.test('Tim Allen added as student', function() {
 
 </details>
 
-<img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/9.png" />
+<img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/8.png" />
 
 ## Step 11
 
