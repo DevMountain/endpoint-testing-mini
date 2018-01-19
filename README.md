@@ -12,7 +12,7 @@ In this project, we will learn the basics of endpoint testing using Postman. Pos
 * `cd` into `./server/`.
 * Run `nodemon` or `node index.js`.
 
-## Step 2
+## Step 1
 
 ### Summary
 
@@ -25,7 +25,7 @@ In this step, we will import a collection of requests to Postman.
   * The file you are importing is inside of the `postman_collection` folder in this repo.
 * After importing, you should have a collection called `Endpoint Testing Mini Project`. If you click on it, the list of requests should expand/close.
 
-## Step 3
+## Step 2
 
 ### Summary
 
@@ -64,7 +64,7 @@ pm.test('All 20 student objects in response', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/1g.gif" />
 
-## Step 4
+## Step 3
 
 ### Summary
 
@@ -112,7 +112,7 @@ pm.test('Correct object in response for ID 9', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/2.png" />
 
-## Step 5
+## Step 4
 
 ### Summary
 
@@ -152,7 +152,7 @@ pm.test('Abey Laynard student object in response', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/3.png" />
 
-## Step 6
+## Step 5
 
 ### Summary
 
@@ -192,7 +192,7 @@ pm.test('Correct students returned for "C" grade', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/4.png" />
 
-## Step 7
+## Step 6
 
 ### Summary
 
@@ -236,7 +236,7 @@ pm.test('Gilbert\'s student object in repsonse', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/5.png" />
 
-## Step 8
+## Step 7
 
 ### Summary
 
@@ -276,7 +276,7 @@ pm.test("All objects contain '608'", function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/6.png" />
 
-## Step 9
+## Step 8
 
 ### Summary
 
@@ -312,7 +312,7 @@ pm.test('Grade should have been updated to "A-" for user 15', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/7.png" />
 
-## Step 10
+## Step 9
 
 ### Summary
 
@@ -358,7 +358,7 @@ pm.test('Tim Allen added as student', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/8.png" />
 
-## Step 11
+## Step 10
 
 ### Summary
 
@@ -394,7 +394,7 @@ pm.test('Student w/ ID 18 removed', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/9-1.png" />
 
-## Step 12
+## Step 11
 
 ### Summary
 
