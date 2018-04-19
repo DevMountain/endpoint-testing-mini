@@ -9,8 +9,7 @@ In this project, we will learn the basics of endpoint testing using Postman. Pos
 * `fork` and `clone` this repository.
 * `cd` into the root of the project.
 * Run `npm install` to get the project dependencies.
-* `cd` into `./server/`.
-* Run `nodemon` or `node index.js`.
+* Run `npm start`.
 
 ## Step 1
 
@@ -49,11 +48,11 @@ In this step, we will create a Postman test for fetching all students.
 ```js
 const response = pm.response.json();
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
-pm.test('All 20 student objects in response', function() {
+pm.test("All 20 student objects in response", function() {
   pm.expect(response.length).to.eql(20);
 });
 ```
@@ -92,19 +91,19 @@ In this step, we will create a Postman test for fetching students by ID.
 ```js
 const response = pm.response.json();
 const student9 = {
-  "id": 9,
-  "student": "Patsy Daunay",
-  "email_address": "pdaunay8@about.com",
-  "phone": "(806) 2654555",
-  "current_grade": "A"
-}
+  id: 9,
+  student: "Patsy Daunay",
+  email_address: "pdaunay8@about.com",
+  phone: "(806) 2654555",
+  current_grade: "A"
+};
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
-pm.test('Correct object in response for ID 9', function() {
-  pm.expect(student9).to.eql(response[0])
+pm.test("Correct object in response for ID 9", function() {
+  pm.expect(response).to.eql(student9);
 });
 ```
 
@@ -113,6 +112,42 @@ pm.test('Correct object in response for ID 9', function() {
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/2.png" />
 
 ## Step 4
+
+### Summary
+
+In this step, we will create a Postman test for fetching students by email.
+
+### Instructions
+
+* Click on the fifth request from the collection `GET - Students by Email`.
+* Click the `Send` button.
+  * You should see the student who's email equals `gdee@clickbank.net`.
+* Create a test that checks that the status code is `200`.
+* Create a test that checks that the student's email is equal to `gdee@clickbank.net`.
+
+### Solution
+
+<details>
+
+<summary> <code> GET - Student by Email </code> </summary>
+
+```js
+let response = pm.response.json();
+
+pm.test("Status code is 200", function() {
+  pm.response.to.have.status(200);
+});
+
+pm.test("Gilbert's student object in response", function() {
+  pm.expect(response.email).to.eql("gdee@clickbank.net");
+});
+```
+
+</details>
+
+<img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/5.png" />
+
+## Step 5
 
 ### Summary
 
@@ -126,7 +161,7 @@ In this step, we will create a Postman test for fetching students by name.
 * Create a test that checks that the status code is `200`.
 * Create a test that checks `Abey Laynard` appears in the results.
 
-### Solution 
+### Solution
 
 <details>
 
@@ -135,16 +170,15 @@ In this step, we will create a Postman test for fetching students by name.
 ```js
 const res = pm.response.json();
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
-pm.test('Abey Laynard student object in response', function() {
-  let abeyObject = false;
-  res.map( obj => {
-    if (obj.student === 'Abey Laynard') abeyObject = true;
-  });
-  pm.expect(abeyObject).to.eql(true);
+pm.test("Abey Laynard student object in response", function() {
+  const studentExists = response.some(
+    student => student.student === "Abey Laynard"
+  );
+  pm.expect(studentExists).to.be.true;
 });
 ```
 
@@ -152,7 +186,7 @@ pm.test('Abey Laynard student object in response', function() {
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/3.png" />
 
-## Step 5
+## Step 6
 
 ### Summary
 
@@ -175,66 +209,21 @@ In this step, we will create a Postman test for fetching students by grade.
 ```js
 const res = pm.response.json();
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
 pm.test('Correct students returned for "C" grade', function() {
-  let allHaveC = true;
-  res.map( obj => {
-      if (obj.current_grade !== 'C') allHaveC = false;
-  });
-  pm.expect(allHaveC).to.eql(true);
+  const correctGrades = response.every(
+    student => student.current_grade === "C"
+  );
+  pm.expect(correctGrades).to.be.true;
 });
 ```
 
 </details>
 
 <img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/4.png" />
-
-## Step 6
-
-### Summary
-
-In this step, we will create a Postman test for fetching students by email.
-
-### Instructions
-
-* Click on the fifth request from the collection `GET - Students by Email`.
-* Click the `Send` button.
-  * You should see only the student data where their email equals `gdee@clickbank.net`.
-* Create a test that checks that the status code is `200`.
-* Create a test that checks that the student's email is equal to `gdee@clickbank.net`.
-
-### Solution 
-
-<details>
-
-<summary> <code> GET - Students by Email </code> </summary>
-
-```js
-let res = pm.response.json();
-let gilbert = {
-  "id": 15,
-  "student": "Gilbert De Gouy",
-  "email_address": "gdee@clickbank.net",
-  "phone": "(615) 2408518",
-  "current_grade": "B"
-}
-
-pm.test("Status code is 200", function () {
-  pm.response.to.have.status(200);
-});
-
-pm.test('Gilbert\'s student object in repsonse', function() {
-  pm.expect(res.length).to.eql(1);
-  pm.expect(res[0]).to.eql(gilbert);
-});
-```
-
-</details>
-
-<img src="https://github.com/DevMountain/endpoint-testing-mini/blob/master/readme-assets/5.png" />
 
 ## Step 7
 
@@ -259,16 +248,15 @@ In this step, we will create a Postman test for fetching students by phone.
 ```js
 const res = pm.response.json();
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
 pm.test("All objects contain '608'", function() {
-  let contains608 = true;
-  res.map( obj => {
-    if (!obj.phone.includes('608')) contains608 = false;
-  });
-  pm.expect(contains608).to.eql(true);
+  const checkPhoneNumbers = response.every(student =>
+    student.phone.includes("608")
+  );
+  pm.expect(checkPhoneNumbers).to.be.true;
 });
 ```
 
@@ -288,6 +276,7 @@ In this step, we will create a Postman test for updating a student's grade.
 * Click the `Send` button.
   * You should see the student data where the `id` equals `15` and the `grade` equals `A-`.
 * Create a test that checks that the status code is `200`.
+* Create a test that checks that the id is equal to `15`.
 * Create a test that checks that returned data has a `grade` of `A-`.
 
 ### Solution
@@ -299,12 +288,16 @@ In this step, we will create a Postman test for updating a student's grade.
 ```js
 const res = pm.response.json();
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
-pm.test('Grade should have been updated to "A-" for user 15', function() {
-  pm.expect(res[0].current_grade).to.eql("A-");
+pm.test("Returns student with correct Id", function() {
+  pm.expect(response.id).to.eql(15);
+});
+
+pm.test("Correctly updates grade to A-", function() {
+  pm.expect(response.current_grade).to.eql("A-");
 });
 ```
 
@@ -322,10 +315,13 @@ In this step, we will create a Postman test for adding a new student.
 
 * Click on the eighth request from the collection `POST - Add Student`.
 * Click the `Send` button.
-  * You should see student data for a student with an `id` equal to `21`.
+  * You should see student data for a student with an `id` created by the server and properties that match the data sent in the body.
 * Create a test that checks that the status code is `200`.
-* Create a test that checks that student `21` has the following information:
-  * `id` equal to `21`.
+* Create a test that checks the student has an `id`.
+* Create a test that checks if the student matches the expected schema.
+  * [TinyValidator for JSON data](https://www.getpostman.com/docs/v6/postman/scripts/test_examples)
+  * [json-schema](http://json-schema.org/examples.html)
+* Create a test that checks that student has the following information:
   * `student` equal to `"Tim Allen"`.
   * `email_address` equal to `"tim@homeimprovement.com"`.
   * `phone` equal to `"(408) 8674530"`.
@@ -339,18 +335,45 @@ In this step, we will create a Postman test for adding a new student.
 ```js
 const res = pm.response.json();
 
-pm.test("Status code is 200", function () {
+const schema = {
+  title: "Student",
+  type: "object",
+  properties: {
+    id: {
+      type: "integer"
+    },
+    student: {
+      type: "string"
+    },
+    email_address: {
+      type: "string"
+    },
+    phone: {
+      type: "string"
+    },
+    current_grade: {
+      type: "string"
+    }
+  },
+  required: ["id", "student", "email_address", "phone", "current_grade"]
+};
+
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
-pm.test('Tim Allen added as student', function() {
-  let newStudentName = 'Tim Allen';
-  let newStudentEmail = "tim@homeimprovement.com";
-  let newStudentPhone = '(408) 8674530';
+pm.test("Student was created", function() {
+  pm.expect(response.id).to.exist;
+});
 
-  pm.expect(res[0].student).to.eql(newStudentName);
-  pm.expect(res[0].email_address).to.eql(newStudentEmail);
-  pm.expect(res[0].phone).to.eql(newStudentPhone);
+pm.test("Student should match schema", function() {
+  pm.expect(tv4.validate(response, schema)).to.be.true;
+});
+
+pm.test("Student has correct information", function() {
+  pm.expect(res.student).to.eql("Tim Allen");
+  pm.expect(res.email_address).to.eql("tim@homeimprovement.com");
+  pm.expect(res.phone).to.eql("(408) 8674530");
 });
 ```
 
@@ -381,12 +404,12 @@ In this step, we will create a Postman test for removing a student.
 ```js
 const res = pm.response.json();
 
-pm.test("Status code is 200", function () {
+pm.test("Status code is 200", function() {
   pm.response.to.have.status(200);
 });
 
-pm.test('Student w/ ID 18 removed', function() {
-  pm.expect(res[0].id).to.eql(18);
+pm.test("Student w/ ID 18 removed", function() {
+  pm.expect(res.id).to.eql(18);
 });
 ```
 

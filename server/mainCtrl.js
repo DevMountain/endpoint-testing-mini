@@ -1,7 +1,7 @@
 let studentList = require("./mockData/student_list.json");
 let nextId = 20;
 module.exports = {
-    getStudents(req, res) {
+  getStudents(req, res) {
         const qObj = req.query;
         function findUsers( input, prop ) {
             const re = new RegExp(input.toLowerCase());
@@ -55,10 +55,8 @@ module.exports = {
         if (isNaN(id)) {
             res.status(400).send('Error with student ID.')
         } else {
-            let student = studentList.filter( student => {
-                return student.id === id;
-            })
-            if (student.length === 0) return res.status(404).send('Student not found');
+            let student = studentList.find(s => s.id === id)
+            if (!student) return res.status(404).send('Student not found');
             return res.status(200).send(student);
         }
     },
@@ -71,8 +69,8 @@ module.exports = {
             res.status(400).send('Error with student ID.')
         } else {
             if (possibleGrades.indexOf(newGrade) === -1) return res.status(400).send("Send valid grade. Possible grades: " + possibleGrades);
-            let student = studentList.filter(s => s.id === id);
-            student[0].current_grade = newGrade;
+            let student = studentList.find(s => s.id === id);
+            student.current_grade = newGrade;
             res.status(200).send(student);
         }
     },
@@ -90,22 +88,22 @@ module.exports = {
             current_grade: b.current_grade
         }
         studentList.push(newStudent)
-        return res.status(200).send([studentList[studentList.length - 1]]);
+        return res.status(200).send(newStudent);
     },
     removeStudent(req,res) {
         let id = parseInt(req.params.id);
         if (isNaN(id)) {
             res.status(400).send('Error with student ID.')
         } else {
-            let studentToRemove = {};
-            studentList = studentList.filter(student => {
-                if (student.id === id) studentToRemove = student;
-                return student.id !== id;
-            })
-            if (Object.keys(studentToRemove).length === 0) {
+            // We don't actually want to remove the student, otherwise the test can only be run once
+            // find the student and return it to fake the functionality
+            const studentToRemove = studentList.find(
+              student => student.id === id
+            )
+            if (!studentToRemove) {
                 return res.status(404).send('No student with that ID.')
             }
-            res.status(200).send([studentToRemove])
+            res.status(200).send(studentToRemove)
         }
     }
 }
