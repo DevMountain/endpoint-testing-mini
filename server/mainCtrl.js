@@ -1,7 +1,7 @@
 let studentList = require("./mockData/student_list.json");
 let nextId = 20;
 module.exports = {
-  getStudents(req, res) {
+    getStudents(req, res) {
         const qObj = req.query;
         function findUsers( input, prop ) {
             const re = new RegExp(input.toLowerCase());
