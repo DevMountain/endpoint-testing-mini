@@ -48,7 +48,35 @@
 				"description": ""
 			},
 			"response": []
-		},
+    },
+    {
+      "name": "GET - Students By Email",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "localhost:4000/api/students?email=gdee@clickbank.net",
+          "host": [
+            "localhost"
+          ],
+          "port": "4000",
+          "path": [
+            "api",
+            "students"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "gdee@clickbank.net",
+              "equals": true
+            }
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
 		{
 			"name": "GET - Students By Name",
 			"request": {
@@ -97,34 +125,6 @@
 						{
 							"key": "grade",
 							"value": "c",
-							"equals": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "GET - Students By Email",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "localhost:4000/api/students?email=gdee@clickbank.net",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"api",
-						"students"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "gdee@clickbank.net",
 							"equals": true
 						}
 					]

@@ -119,7 +119,7 @@ In this step, we will create a Postman test for fetching students by email.
 
 ### Instructions
 
-* Click on the fifth request from the collection `GET - Students by Email`.
+* Click on the third request from the collection `GET - Students by Email`.
 * Click the `Send` button.
   * You should see the student who's email equals `gdee@clickbank.net`.
 * Create a test that checks that the status code is `200`.
@@ -155,7 +155,7 @@ In this step, we will create a Postman test for fetching students by name.
 
 ### Instructions
 
-* Click on the third request from the collection `GET - Students by Name`
+* Click on the fourth request from the collection `GET - Students by Name`
 * Click the `Send` button.
   * You should see only the student data where their name contains `la`.
 * Create a test that checks that the status code is `200`.
@@ -194,7 +194,7 @@ In this step, we will create a Postman test for fetching students by grade.
 
 ### Instructions
 
-* Click on the fourth request from the collection `GET - Students by Grade`.
+* Click on the fifth request from the collection `GET - Students by Grade`.
 * Click the `Send` button.
   * You should see only the student data where their grade equals `C`.
 * Create a test that checks that the status code is `200`.
