@@ -9,7 +9,7 @@ In this project, we will learn the basics of endpoint testing using Postman. Pos
 * `fork` and `clone` this repository.
 * `cd` into the root of the project.
 * Run `npm install` to get the project dependencies.
-* Run `npm start`.
+* Run `nodemon`.
 
 ## Step 1
 
